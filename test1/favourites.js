@@ -6,9 +6,9 @@ display(card)
 
 function display(data) {
 
-    document.querySelector(".heading").innerHTML = ""
+    // document.querySelector("tbody").innerHTML = ""
 
-    data.forEach(function (elem) {
+    data.forEach(function (elem, index) {
         var box = document.createElement("tr")
 
         var number = document.createElement("td")
@@ -29,8 +29,9 @@ function display(data) {
         var favourites = document.createElement("td")
         favourites.innerText = "Delete"
         favourites.style.color = "red"
+        favourites.style.cursor = "pointer"
         favourites.addEventListener("click", function () {
-            interest(elem)
+            interest(elem, index)
         })
 
         box.append(number, team1, team2, date, venue, favourites)

@@ -9,7 +9,7 @@ display(formdata)
 
 function display(data) {
 
-    document.querySelector(".heading").innerHTML = ""
+    document.querySelector("tbody").innerHTML = ""
 
     data.forEach(function (elem) {
         var box = document.createElement("tr")
@@ -32,6 +32,7 @@ function display(data) {
         var favourites = document.createElement("td")
         favourites.innerText = "Add favourite"
         favourites.style.color = "green"
+        favourites.style.cursor = "pointer"
         favourites.addEventListener("click", function () {
             interest(elem)
         })
@@ -56,22 +57,19 @@ function interest(elem) {
 
 // filter---->
 
-var filter = document.querySelector("#filterVenue")
-filter.addEventListener("change", function () {
 
+var filter = document.querySelector("#filterVenue")
+filter.addEventListener("click", fun)
+
+function fun() {
     if (filter.value == "none") {
         display(formdata)
     }
     else {
-        var filtered = formdata.filter(function (element) {
-            return element.venue == filter.value
+        var filtered = formdata.filter(function (elem) {
+            return elem.venue == filter.value
         })
-        // console.log(filtered)
-        display(filtered);
+        display(filtered)
     }
-})
-
-
-
-
+}
 
